@@ -1,0 +1,152 @@
+.authContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.authCard {
+    background: var(--white);
+    width: 100%;
+    max-width: 450px;
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cardLogoTop {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    height: 30px;
+    width: auto;
+}
+
+.authCard h2 {
+    font-weight: 800;
+    font-size: 2rem;
+    margin: 10px 0 10px 0;
+}
+
+.authCard p {
+    color: #64748b;
+    margin-bottom: 30px;
+}
+
+.formGroup {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.formGroup input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid #f1f5f9;
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.formGroup input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fffdfb;
+}
+
+.btnRegister {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btnRegister:hover {
+    background: #8d664a;
+    transform: translateY(-2px);
+}
+
+.socialBtn {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #f1f5f9;
+    border-radius: 12px;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    font-weight: 600;
+    transition: 0.2s;
+    margin-bottom: 10px;
+}
+
+.socialBtn:hover {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.btnFb {
+    background: #1877F2;
+    color: white;
+    border: none;
+}
+
+.btnFb:hover {
+    background: #145dbf;
+}
+
+.switchAuth {
+    margin-top: 25px;
+    font-size: 0.9rem;
+}
+
+.switchAuth a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.divider {
+    margin: 25px 0;
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.divider hr {
+    flex: 1;
+    border: 0;
+    border-top: 1px solid #f1f5f9;
+}
+
+.error {
+    color: #ef4444;
+    font-size: 0.85rem;
+    margin-top: 10px;
+}

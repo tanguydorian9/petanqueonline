@@ -1,0 +1,192 @@
+/* --- LAYOUT & BACKGROUND --- */
+.mapPage {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    color: #2d3436;
+    background: linear-gradient(-45deg, #eef2f3, #8e9eab, #eef2f3);
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+    display: flex;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 5px 0 30px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: help;
+}
+
+.sidebar h1 {
+    font-size: 2.8em;
+    margin: 0 0 20px 0;
+    line-height: 1.1;
+    background: linear-gradient(45deg, #2c3e50, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar p {
+    font-size: 1.1em;
+    color: #636e72;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Search */
+.searchContainer { position: relative; margin-bottom: 40px; }
+
+.searchInput {
+    width: 100%;
+    padding: 18px 25px 18px 50px;
+    border-radius: 15px;
+    border: 2px solid white;
+    background: rgba(255, 255, 255, 0.8);
+    font-family: inherit;
+    font-size: 1em;
+    outline: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+.searchInput:focus {
+    border-color: #3498db;
+    box-shadow: 0 5px 20px rgba(52, 152, 219, 0.15);
+}
+
+.searchIcon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+}
+
+/* Stats */
+.statsRow { display: flex; gap: 20px; }
+
+.statCard {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    flex: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.2s;
+}
+
+.statCard:hover { transform: translateY(-5px); }
+.statNumber { font-size: 1.5em; font-weight: 800; color: #3498db; display: block; }
+.statLabel { font-size: 0.8em; color: #999; text-transform: uppercase; font-weight: 700; }
+
+/* --- MAP --- */
+.mapWrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mapWrapper svg {
+    max-height: 90vh;
+    width: 100%;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.1));
+}
+
+/* --- TOOLTIP --- */
+.tooltip {
+    position: absolute;
+    display: none;
+    background: rgba(44, 62, 80, 0.95);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.9em;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    backdrop-filter: blur(5px);
+    white-space: nowrap;
+    transform: translate(20px, -50%);
+}
+
+.tooltipVisible { display: block; }
+
+/* --- TOAST --- */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: -300px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9em;
+    z-index: 200;
+    transition: right 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-left: 4px solid #2ecc71;
+}
+
+.toastVisible { right: 20px; }
+
+.sidebarFooter {
+    margin-top: auto;
+    font-size: 0.8em;
+    color: #aaa;
+    padding-top: 40px;
+}
+
+/* --- EASTER EGG --- */
+.fallingObject {
+    position: fixed;
+    top: -100px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(120vh) rotate(360deg); }
+}
+
+/* --- MOBILE --- */
+@media (max-width: 900px) {
+    .mapPage { flex-direction: column; height: auto; overflow: visible; }
+    .sidebar { width: 100%; padding: 30px 20px; position: relative; }
+    .mapWrapper { height: 60vh; }
+}

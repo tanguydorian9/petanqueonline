@@ -1,0 +1,123 @@
+.heroContainer {
+    display: flex;
+    gap: 30px;
+    padding: 40px 60px;
+    justify-content: center;
+    flex: 1;
+}
+
+.mainCard {
+    flex: 1;
+    max-width: 750px;
+    height: 600px;
+    background-color: var(--white);
+    border-radius: 40px;
+    border: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    box-shadow: var(--shadow);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+.cardLeft {
+    background-image: url('/images/cartedefrancev3.png');
+}
+
+.cardRight {
+    background-image: url('/images/boulepetanquev2.png');
+}
+
+.mainCard:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 40px 70px rgba(166, 123, 91, 0.15);
+    border-color: var(--accent);
+}
+
+.bubbleBtn {
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 22px 45px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    z-index: 2;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.hoverText {
+    position: absolute;
+    bottom: 130px;
+    font-weight: 600;
+    color: var(--primary);
+    opacity: 0;
+    transform: translateY(15px);
+    transition: 0.5s;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 18px;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+}
+
+.mainCard:hover .hoverText {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- BOTTOM NAV CARDS --- */
+.bottomNav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 60px;
+    background: #f1f5f9;
+}
+
+.navCard {
+    flex: 1;
+    height: 160px;
+    background: var(--white);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--primary);
+    border: 1px solid #e2e8f0;
+    transition: all 0.4s ease;
+}
+
+.navCard i {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: var(--accent);
+    transition: 0.3s;
+}
+
+.navCard span {
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.navCard:hover {
+    background-color: #0f172a;
+    border-color: #0f172a;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);
+}
+
+.navCard:hover i,
+.navCard:hover span {
+    color: #ffffff;
+}

@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+/* --- DESIGN SYSTEM --- */
+:root {
+    --bg: #f8fafc;
+    --primary: #0f172a;
+    --accent: #A67B5B;
+    --white: #ffffff;
+    --text-muted: #64748b;
+    --shadow: 0 20px 50px rgba(0,0,0,0.05);
+    --card-border: #f1f5f9;
+}
+
+body.dark-mode {
+    --bg: #0f172a;
+    --primary: #f8fafc;
+    --white: #1e293b;
+    --text-muted: #94a3b8;
+    --card-border: #334155;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background 0.3s;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

@@ -1,0 +1,51 @@
+.shopPage {
+    background-color: #f2f1e1;
+}
+
+.maintenanceContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.maintenanceText {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.8rem;
+    max-width: 800px;
+    text-transform: uppercase;
+    margin: 0 0 20px 0;
+}
+
+.maintenanceImg {
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.backBtn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 18px 35px;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+    margin-top: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.backBtn:hover {
+    transform: translateY(-3px);
+    background-color: var(--accent);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}

@@ -1,0 +1,111 @@
+.uploadSection { max-width: 935px; margin: 40px auto; padding: 0 20px; }
+
+.uploadZone {
+    background: var(--white); border: 2px dashed var(--accent);
+    border-radius: 24px; padding: 40px; text-align: center;
+    cursor: pointer; transition: 0.3s; box-shadow: var(--shadow);
+    position: relative;
+}
+
+.uploadCardLogo {
+    position: absolute; top: 20px; left: 25px;
+    height: 25px; width: auto; opacity: 0.7;
+}
+
+.uploadPlaceholder i {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.uploadPreview {
+    display: flex; flex-direction: row; align-items: center; gap: 30px; text-align: left;
+}
+
+.previewImgContainer {
+    width: 140px; height: 140px; border-radius: 12px; overflow: hidden;
+    border: 2px solid var(--accent); flex-shrink: 0;
+}
+.previewImgContainer img { width: 100%; height: 100%; object-fit: cover; }
+
+.uploadForm { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+
+.uploadForm input[type="text"] {
+    padding: 12px; border-radius: 10px; border: 1px solid var(--card-border);
+    background: var(--bg); color: var(--primary); font-family: inherit; width: 100%;
+}
+
+.btnPublish {
+    background: var(--primary); color: #fff; border: none;
+    padding: 12px 24px; border-radius: 8px; font-weight: 700;
+    cursor: pointer; transition: 0.2s;
+}
+.btnPublish:hover { background: var(--accent); transform: scale(1.05); }
+
+.btnCancel {
+    background: none; border: none; color: var(--text-muted); cursor: pointer; font-weight: 600;
+}
+
+/* --- TABS --- */
+.tabs {
+    display: flex; justify-content: center; gap: 60px;
+    margin: 30px 0; border-top: 1px solid var(--card-border); padding-top: 20px;
+}
+
+.tab {
+    cursor: pointer; font-size: 1.1rem; font-weight: 800;
+    color: var(--text-muted); transition: 0.3s; padding: 10px;
+    background: none; border: none; font-family: inherit;
+}
+.tabActive { color: var(--primary); border-bottom: 3px solid var(--accent); }
+
+/* --- GRID --- */
+.grid {
+    max-width: 935px; margin: 0 auto 50px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 20px;
+}
+
+.postCard {
+    background: var(--white); border-radius: 12px; overflow: hidden;
+    box-shadow: var(--shadow); cursor: pointer; transition: 0.3s;
+}
+.privateStyle { border: 2px solid var(--accent); }
+.postCard:hover { transform: translateY(-5px); }
+
+.imgBox { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
+.imgBox img { width: 100%; height: 100%; object-fit: cover; }
+
+.postInfo { padding: 12px; display: flex; justify-content: space-between; align-items: center; }
+.stats { display: flex; gap: 12px; font-weight: 700; font-size: 0.9rem; }
+.privateLabel {
+    color: var(--accent); font-size: 0.75rem; font-weight: 800;
+    display: flex; align-items: center; gap: 4px;
+}
+
+/* --- MODAL --- */
+.modalContainer {
+    display: flex; width: 90vw; max-width: 1100px; height: 80vh;
+}
+
+.modalLeft {
+    flex: 1.5; background: #000; display: flex;
+    align-items: center; justify-content: center;
+}
+.modalLeft img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.modalRight { flex: 1; padding: 30px; display: flex; flex-direction: column; }
+
+.commentBox {
+    flex: 1; overflow-y: auto; margin-top: 20px;
+    border-top: 1px solid var(--card-border); padding-top: 15px; font-size: 0.9rem;
+}
+
+.checkboxRow {
+    display: flex; align-items: center; gap: 8px;
+}
+
+.checkboxRow input { width: 18px; height: 18px; }
+.checkboxRow label { font-weight: 700; }
+
+.btnRow { display: flex; gap: 10px; }
