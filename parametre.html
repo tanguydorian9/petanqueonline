@@ -6,80 +6,8 @@
     <title>Paramètres | FORUP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
     <style>
-        :root {
-            --bg: #f8fafc;
-            --primary: #0f172a; 
-            --accent: #A67B5B; 
-            --white: #ffffff;
-            --text-muted: #64748b;
-            --shadow: 0 20px 50px rgba(0,0,0,0.05);
-            --card-border: #f1f5f9;
-        }
-
-        /* --- STYLES MODE SOMBRE --- */
-        body.dark-mode {
-            --bg: #0f172a;
-            --primary: #f8fafc;
-            --white: #1e293b;
-            --text-muted: #94a3b8;
-            --card-border: #334155;
-        }
-
-        body { 
-            margin: 0; 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--bg); 
-            color: var(--primary);
-            min-height: 100vh;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex; 
-            align-items: center;
-            justify-content: center; /* Centre les liens du menu */
-            padding: 0 60px; 
-            height: 90px; 
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px); 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000;
-            border-bottom: 1px solid var(--card-border);
-        }
-        
-        .logo { 
-            position: absolute;
-            left: 60px;
-            display: flex; 
-            align-items: center; 
-            text-decoration: none; 
-        }
-        .logo img { height: 40px; width: auto; }
-
-        .nav-links { 
-            display: flex; 
-            gap: 45px; 
-        }
-        .nav-links a { 
-            text-decoration: none; 
-            color: var(--primary); 
-            font-weight: 600; 
-            font-size: 17.6px; /* Taille mise à jour ici */
-            transition: 0.3s; 
-        }
-        .nav-links a:hover { color: var(--accent); }
-
-        .nav-right { 
-            position: absolute;
-            right: 60px;
-            display: flex; 
-            gap: 20px; 
-            align-items: center; 
-        }
-
         /* --- LAYOUT --- */
         .settings-container {
             max-width: 800px;
@@ -101,9 +29,9 @@
 
         .setting-section { margin-bottom: 50px; }
         .setting-section:last-child { margin-bottom: 0; }
-        
-        .section-title { 
-            font-size: 0.9rem; font-weight: 800; text-transform: uppercase; 
+
+        .section-title {
+            font-size: 0.9rem; font-weight: 800; text-transform: uppercase;
             letter-spacing: 1px; color: var(--accent); margin-bottom: 25px;
             display: flex; align-items: center; gap: 10px;
         }
@@ -113,7 +41,7 @@
             padding: 20px 0; border-bottom: 1px solid var(--card-border);
         }
         .setting-row:last-child { border-bottom: none; }
-        
+
         .setting-info { flex: 1; padding-right: 30px; }
         .setting-info h4 { margin: 0; font-size: 1.1rem; font-weight: 700; color: var(--primary); }
         .setting-info p { margin: 5px 0 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
@@ -145,7 +73,7 @@
             transition: 0.3s; font-size: 1rem; text-transform: uppercase;
         }
         .btn-save:hover { background: var(--accent); transform: translateY(-3px); color: white; }
-        
+
         .btn-back {
             background: var(--card-border); color: var(--primary); border: none; flex: 1;
             padding: 20px; border-radius: 20px; font-weight: 700; cursor: pointer;
@@ -157,16 +85,33 @@
 
     <nav>
         <a href="index.html" class="logo">
-            <img src="images/logo1.png" alt="FORUP">
+            <img src="images/logo1.png" alt="Pétanque Online Logo">
         </a>
         <div class="nav-links">
             <a href="carte.html">Forum</a>
-            <a href="concours.html">Concours</a>
+            <a href="#">Concours</a>
             <a href="boutique.html">Boutique</a>
             <a href="galerie.html">Galerie</a>
         </div>
         <div class="nav-right">
-            <a href="compte.html" style="color: var(--primary); font-size: 1.8rem;"><i class="fa-solid fa-circle-user"></i></a>
+            <div class="user-menu-wrapper" id="user-menu">
+                <div id="logged-out-view">
+                    <a href="connexion.html" class="account-icon">
+                        <i class="fa-regular fa-circle-user"></i>
+                    </a>
+                </div>
+                <div id="logged-in-view" style="display: none;">
+                    <div class="account-icon active-user">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="compte.html">Mon Profil</a>
+                        <a href="parametre.html">Paramètres</a>
+                        <button onclick="simulateLogout()" class="btn-logout-menu">Déconnexion</button>
+                    </div>
+                </div>
+            </div>
+            <a href="parametre.html" class="settings-icon"><i class="fa-solid fa-sliders"></i></a>
         </div>
     </nav>
 
@@ -278,6 +223,24 @@
         function saveSettings() {
             alert("Préférences sauvegardées avec succès !");
         }
+
+        let isUserLoggedIn = false;
+        function updateUI() {
+            const loggedOutView = document.getElementById('logged-out-view');
+            const loggedInView = document.getElementById('logged-in-view');
+            if (isUserLoggedIn) {
+                loggedOutView.style.display = 'none';
+                loggedInView.style.display = 'block';
+            } else {
+                loggedOutView.style.display = 'block';
+                loggedInView.style.display = 'none';
+            }
+        }
+        function simulateLogout() {
+            isUserLoggedIn = false;
+            updateUI();
+        }
+        updateUI();
     </script>
 
 </body>

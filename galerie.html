@@ -6,52 +6,10 @@
     <title>Galerie | FORUP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
     <style>
         :root {
-            --bg: #f8fafc; --primary: #0f172a; --accent: #A67B5B; 
-            --white: #ffffff; --text-muted: #64748b; --card-border: #f1f5f9;
-            --like-red: #ef4444; --shadow: 0 15px 35px rgba(0,0,0,0.05);
-        }
-        /* MODE SOMBRE */
-        body.dark-mode {
-            --bg: #0f172a; --primary: #f8fafc; --white: #1e293b;
-            --text-muted: #94a3b8; --card-border: #334155;
-        }
-
-        body { margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--primary); transition: background 0.3s; }
-
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex; align-items: center;
-            padding: 0 60px; height: 90px; 
-            background: var(--white);
-            border-bottom: 1px solid var(--card-border); position: sticky; top: 0; z-index: 1000;
-        }
-        
-        .logo-nav { 
-            display: flex; 
-            align-items: center; 
-            text-decoration: none;
-            width: 180px; 
-        }
-        /* TAILLE DU LOGO FIXÉE À 40PX */
-        .logo-nav img { height: 40px; width: auto; }
-
-        .nav-links { 
-            display: flex; 
-            gap: 35px; 
-            flex: 1; 
-            justify-content: center; 
-        }
-        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; font-size: 1rem; }
-        .nav-links a:hover { color: var(--accent); }
-
-        .nav-right {
-            width: 180px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 20px;
+            --like-red: #ef4444;
         }
 
         /* --- ZONE D'AJOUT --- */
@@ -62,7 +20,7 @@
             cursor: pointer; transition: 0.3s; box-shadow: var(--shadow);
             position: relative;
         }
-        
+
         .upload-card-logo {
             position: absolute;
             top: 20px;
@@ -75,10 +33,10 @@
         #upload-preview { display: none; flex-direction: row; align-items: center; gap: 30px; text-align: left; }
         .preview-img-container { width: 140px; height: 140px; border-radius: 12px; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; }
         .preview-img-container img { width: 100%; height: 100%; object-fit: cover; }
-        
+
         .upload-form { flex: 1; display: flex; flex-direction: column; gap: 12px; }
-        .upload-form input[type="text"] { 
-            padding: 12px; border-radius: 10px; border: 1px solid var(--card-border); 
+        .upload-form input[type="text"] {
+            padding: 12px; border-radius: 10px; border: 1px solid var(--card-border);
             background: var(--bg); color: var(--primary); font-family: inherit; width: 100%;
         }
         .btn-publish { background: var(--primary); color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; }
@@ -94,18 +52,18 @@
         .post-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); cursor: pointer; transition: 0.3s; }
         .post-card.private-style { border: 2px solid var(--accent); }
         .post-card:hover { transform: translateY(-5px); }
-        
+
         .img-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        
+
         .post-info { padding: 12px; display: flex; justify-content: space-between; align-items: center; }
         .stats { display: flex; gap: 12px; font-weight: 700; font-size: 0.9rem; }
         .private-label { color: var(--accent); font-size: 0.75rem; font-weight: 800; display: flex; align-items: center; gap: 4px; }
 
         /* --- MODALE --- */
-        .modal { 
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; 
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center;
         }
         .modal-container { background: var(--white); display: flex; width: 90%; max-width: 1100px; height: 80vh; border-radius: 15px; overflow: hidden; position: relative; }
         .modal-left { flex: 1.5; background: #000; display: flex; align-items: center; justify-content: center; }
@@ -118,19 +76,36 @@
 <body>
 
     <nav>
-        <a href="index.html" class="logo-nav">
-            <img src="images/logo1.png" alt="FORUP">
+        <a href="index.html" class="logo">
+            <img src="images/logo1.png" alt="Pétanque Online Logo">
         </a>
-        
+
         <div class="nav-links">
             <a href="carte.html">Forum</a>
-            <a href="concours.html">Concours</a>
+            <a href="#">Concours</a>
             <a href="boutique.html">Boutique</a>
             <a href="galerie.html">Galerie</a>
         </div>
 
         <div class="nav-right">
-            <a href="parametre.html" style="color: var(--primary); font-size: 1.3rem;"><i class="fa-solid fa-sliders"></i></a>
+            <div class="user-menu-wrapper" id="user-menu">
+                <div id="logged-out-view">
+                    <a href="connexion.html" class="account-icon">
+                        <i class="fa-regular fa-circle-user"></i>
+                    </a>
+                </div>
+                <div id="logged-in-view" style="display: none;">
+                    <div class="account-icon active-user">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="compte.html">Mon Profil</a>
+                        <a href="parametre.html">Paramètres</a>
+                        <button onclick="simulateLogout()" class="btn-logout-menu">Déconnexion</button>
+                    </div>
+                </div>
+            </div>
+            <a href="parametre.html" class="settings-icon"><i class="fa-solid fa-sliders"></i></a>
         </div>
     </nav>
 
@@ -138,7 +113,7 @@
         <div class="upload-zone" id="drop-zone">
             <img src="images/logo1.png" alt="Logo" class="upload-card-logo">
             <input type="file" id="fileInput" hidden accept="image/*">
-            
+
             <div id="upload-placeholder">
                 <i class="fa-solid fa-camera" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 10px;"></i>
                 <h2>Partager un moment</h2>
@@ -192,9 +167,9 @@
                 <h3 style="margin-top:0">Description</h3>
                 <p id="modalDesc" style="color: var(--text-muted); line-height: 1.5;"></p>
                 <div class="comment-box" id="modalComments">
-                    <p><strong>Admin :</strong> Top cette photo ! 🔥</p>
+                    <p><strong>Admin :</strong> Top cette photo !</p>
                 </div>
-                <button class="btn-publish" style="margin-top: 20px; background: var(--accent);">❤️ LIKER</button>
+                <button class="btn-publish" style="margin-top: 20px; background: var(--accent);">LIKER</button>
             </div>
         </div>
     </div>
@@ -203,6 +178,24 @@
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
         }
+
+        let isUserLoggedIn = false;
+        function updateUI() {
+            const loggedOutView = document.getElementById('logged-out-view');
+            const loggedInView = document.getElementById('logged-in-view');
+            if (isUserLoggedIn) {
+                loggedOutView.style.display = 'none';
+                loggedInView.style.display = 'block';
+            } else {
+                loggedOutView.style.display = 'block';
+                loggedInView.style.display = 'none';
+            }
+        }
+        function simulateLogout() {
+            isUserLoggedIn = false;
+            updateUI();
+        }
+        updateUI();
 
         const fileInput = document.getElementById('fileInput');
         const dropZone = document.getElementById('drop-zone');
@@ -257,12 +250,12 @@
                         <span><i class="fa-solid fa-heart"></i> 0</span>
                         ${isPublic ? '<span><i class="fa-solid fa-comment"></i> 0</span>' : '<span class="private-label"><i class="fa-solid fa-lock"></i> PRIVÉ</span>'}
                     </div>
-                    <p class="full-desc" hidden>${desc || "Souvenir FORUP"}</p>
+                    <p class="full-desc" hidden>${desc || "Souvenir Pétanque Online"}</p>
                 </div>
             `;
 
             newCard.onclick = function() { openModal(this); };
-            grid.prepend(newCard); 
+            grid.prepend(newCard);
             resetUpload();
             switchTab(isPublic ? 'public' : 'private', document.querySelectorAll('.tab')[isPublic ? 0 : 1]);
         }
@@ -270,7 +263,7 @@
         function switchTab(type, el) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             el.classList.add('active');
-            
+
             document.querySelectorAll('.post-card').forEach(card => {
                 if(type === 'public') {
                     card.style.display = (card.dataset.type === 'public') ? 'block' : 'none';

@@ -6,107 +6,11 @@
     <title>Qui Sommes Nous | Pétanque Online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
     <style>
-        :root {
-            --bg: #f8fafc;
-            --primary: #0f172a; 
-            --accent: #A67B5B; 
-            --white: #ffffff;
-            --text-muted: #64748b;
-            --shadow: 0 20px 50px rgba(0,0,0,0.05);
-            --card-border: #f1f5f9;
-        }
-
         body {
-            margin: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg);
-            color: var(--primary);
             line-height: 1.6;
-            transition: background 0.3s;
         }
-
-        /* --- NAVIGATION (MODÈLE INDEX) --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 60px;
-            height: 90px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .logo { 
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            height: 100%;
-            z-index: 10;
-        }
-
-        .logo img {
-            height: 40px; 
-            width: auto;
-            display: block;
-            object-fit: contain;
-            mix-blend-mode: multiply; 
-        }
-
-        .nav-links { 
-            display: flex; 
-            gap: 40px; 
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 1.1rem; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
-
-        .nav-right { display: flex; gap: 20px; align-items: center; z-index: 10; }
-
-        .user-menu-wrapper { position: relative; display: inline-block; }
-        .account-icon { font-size: 1.8rem; color: var(--primary); text-decoration: none; transition: 0.3s; cursor: pointer; display: flex; align-items: center; }
-        .account-icon:hover, .account-icon.active-user { color: var(--accent); }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background-color: white;
-            min-width: 180px;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            margin-top: 15px;
-            border: 1px solid var(--card-border);
-        }
-
-        .dropdown-content a, .dropdown-content button {
-            color: var(--primary);
-            padding: 12px 20px;
-            text-decoration: none;
-            display: block;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 600;
-            width: 100%;
-            border: none;
-            background: none;
-            text-align: left;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .dropdown-content a:hover, .dropdown-content button:hover { background-color: #f8fafc; color: var(--accent); }
-        .btn-logout-menu { border-top: 1px solid var(--card-border) !important; color: #ef4444 !important; }
-        .user-menu-wrapper:hover .dropdown-content { display: block; }
 
         /* --- STRUCTURE PAGE --- */
         .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
@@ -170,7 +74,7 @@
                     </div>
                 </div>
             </div>
-            <a href="parametre.html" style="color: var(--primary); font-size: 1.5rem;"><i class="fa-solid fa-sliders"></i></a>
+            <a href="parametre.html" class="settings-icon"><i class="fa-solid fa-sliders"></i></a>
         </div>
     </nav>
 
@@ -179,12 +83,12 @@
 
         <div class="intro-section">
             <div class="photo-container-main">
-                <img src="images/pauldorianpetanque.jpeg" alt="Dorian et Paul" class="photo-placeholder"> 
+                <img src="images/pauldorianpetanque.jpeg" alt="Dorian et Paul" class="photo-placeholder">
             </div>
             <div>
                 <h2>Nous</h2>
-                <p>Nous, c'est Dorian et Paul. On se connaît depuis notre plus jeune âge : on a grandi ensemble en étant voisins dans un petit village en Bretagne. Depuis 20 ans, on ne s’est jamais perdus de vue et on est toujours restés de très bons amis.</p>
-                <p><strong>Pétanque Online</strong> est né de notre amitié et de la passion de Dorian pour la pétanque. On s’est donné une mission claire : casser l’image du « sport de camping » et montrer que la pétanque peut être aussi dynamique que moderne. Notre objectif ? Donner envie aux gens de sortir, de se rencontrer et de vivre de vrais moments de partage sur le terrain.</p>
+                <p>Nous, c'est Dorian et Paul. On se connaît depuis notre plus jeune âge : on a grandi ensemble en étant voisins dans un petit village en Bretagne. Depuis 20 ans, on ne s'est jamais perdus de vue et on est toujours restés de très bons amis.</p>
+                <p><strong>Pétanque Online</strong> est né de notre amitié et de la passion de Dorian pour la pétanque. On s'est donné une mission claire : casser l'image du « sport de camping » et montrer que la pétanque peut être aussi dynamique que moderne. Notre objectif ? Donner envie aux gens de sortir, de se rencontrer et de vivre de vrais moments de partage sur le terrain.</p>
             </div>
         </div>
 
@@ -192,29 +96,29 @@
             <div class="person-card">
                 <img src="images/photodorian1.jpeg" alt="Dorian" class="photo-square">
                 <h2>Dorian</h2>
-                <p>Je m’appelle Dorian, j’ai 22 ans et je viens du Finistère. Je joue à la pétanque depuis l’âge de 5 ans, un sport qui fait partie intégrante de ma vie et de mon histoire familiale, puisque toute ma famille y joue et que mes parents se sont même rencontrés autour d’un terrain de pétanque.</p>
-                <p>Calme, sérieux et passionné, j’aime autant la pétanque conviviale que la compétition. À travers Pétanque Online, je souhaite partager mon expérience et transmettre les valeurs fortes de la pétanque : respect, esprit d’équipe et convivialité.</p>
+                <p>Je m'appelle Dorian, j'ai 22 ans et je viens du Finistère. Je joue à la pétanque depuis l'âge de 5 ans, un sport qui fait partie intégrante de ma vie et de mon histoire familiale, puisque toute ma famille y joue et que mes parents se sont même rencontrés autour d'un terrain de pétanque.</p>
+                <p>Calme, sérieux et passionné, j'aime autant la pétanque conviviale que la compétition. À travers Pétanque Online, je souhaite partager mon expérience et transmettre les valeurs fortes de la pétanque : respect, esprit d'équipe et convivialité.</p>
             </div>
 
             <div class="person-card">
                 <img src="images/photopaul1.jpg" alt="Paul" class="photo-square">
                 <h2>Paul</h2>
-                <p>Moi, c’est Paul. Souriant, posé et sociable, j’aime avant tout les échanges simples et les bons moments partagés. La pétanque, je la pratique surtout comme un loisir, en famille ou entre amis, pour ce qu’elle représente : la convivialité et le plaisir d’être ensemble.</p>
-                <p>Après mes études, j’ai eu envie de passer du côté concret et de me lancer dans un projet qui ait du sens. Avec Pétanque Online, je mets aujourd’hui ma créativité et mes compétences au service d’un projet humain, dynamique et fédérateur.</p>
+                <p>Moi, c'est Paul. Souriant, posé et sociable, j'aime avant tout les échanges simples et les bons moments partagés. La pétanque, je la pratique surtout comme un loisir, en famille ou entre amis, pour ce qu'elle représente : la convivialité et le plaisir d'être ensemble.</p>
+                <p>Après mes études, j'ai eu envie de passer du côté concret et de me lancer dans un projet qui ait du sens. Avec Pétanque Online, je mets aujourd'hui ma créativité et mes compétences au service d'un projet humain, dynamique et fédérateur.</p>
             </div>
         </div>
 
         <h2>Présentation</h2>
-        <p>L’idée de créer ce site est née de notre envie de rassembler les passionnés de pétanque autour d’un espace commun, où chacun peut échanger, s’informer et partager sa passion, qu’il soit joueur loisir ou compétiteur.</p>
+        <p>L'idée de créer ce site est née de notre envie de rassembler les passionnés de pétanque autour d'un espace commun, où chacun peut échanger, s'informer et partager sa passion, qu'il soit joueur loisir ou compétiteur.</p>
 
         <h2>Histoire du site</h2>
-        <p>Pendant deux mois, chaque matin, on se retrouvait pour travailler sur notre idée, expérimenter des fonctionnalités et résoudre les problèmes ensemble. On a beaucoup appris sur la création d’un projet, sur nous-mêmes et sur la manière de mener une idée à terme. Aujourd’hui, notre site <strong>Pétanque Online</strong> est en ligne et nous espérons le voir grandir. Nous continuerons à travailler pour le faire connaître, auprès de tous les passionnés et des novices qui veulent découvrir la pétanque.</p>
+        <p>Pendant deux mois, chaque matin, on se retrouvait pour travailler sur notre idée, expérimenter des fonctionnalités et résoudre les problèmes ensemble. On a beaucoup appris sur la création d'un projet, sur nous-mêmes et sur la manière de mener une idée à terme. Aujourd'hui, notre site <strong>Pétanque Online</strong> est en ligne et nous espérons le voir grandir. Nous continuerons à travailler pour le faire connaître, auprès de tous les passionnés et des novices qui veulent découvrir la pétanque.</p>
 
         <h2>Nos 4 rubriques</h2>
         <ul class="rubriques-list">
             <li><strong>Le forum :</strong> pour discuter, poser des questions, partager des expériences.</li>
             <li><strong>Les concours :</strong> pour retrouver les compétitions partout en France.</li>
-            <li><strong>La boutique :</strong> pour s’équiper et représenter la communauté.</li>
+            <li><strong>La boutique :</strong> pour s'équiper et représenter la communauté.</li>
             <li><strong>La galerie :</strong> pour partager des photos de tournois, de moments conviviaux et de souvenirs.</li>
         </ul>
 
@@ -222,15 +126,15 @@
         <div class="grid-valeurs">
             <div class="valeur-item">
                 <strong>Convivialité</strong>
-                <p>La pétanque est avant tout un sport de partage et de bonne humeur. Nous tenons à créer un espace où chacun se sent bienvenu, dans le respect et l’esprit d’amitié.</p>
+                <p>La pétanque est avant tout un sport de partage et de bonne humeur. Nous tenons à créer un espace où chacun se sent bienvenu, dans le respect et l'esprit d'amitié.</p>
             </div>
             <div class="valeur-item">
                 <strong>Favoriser les échanges</strong>
-                <p>La pétanque est aussi un formidable moyen de créer du lien social. Elle permet de rencontrer du monde, d’échanger, de partager des moments simples et de ne pas rester seul. À travers Pétanque Online, nous souhaitons encourager les rencontres, les discussions et la création d’une vraie communauté.</p>
+                <p>La pétanque est aussi un formidable moyen de créer du lien social. Elle permet de rencontrer du monde, d'échanger, de partager des moments simples et de ne pas rester seul. À travers Pétanque Online, nous souhaitons encourager les rencontres, les discussions et la création d'une vraie communauté.</p>
             </div>
             <div class="valeur-item">
-                <strong>L’Ambition</strong>
-                <p>Chacun a ses propres objectifs, qu’ils soient sportifs ou personnels. Avec du travail, de la persévérance et du respect, tout est possible, que ce soit à la pétanque ou dans d’autres domaines de la vie. Nous croyons en l’importance de se fixer des buts et de tout faire pour les atteindre.</p>
+                <strong>L'Ambition</strong>
+                <p>Chacun a ses propres objectifs, qu'ils soient sportifs ou personnels. Avec du travail, de la persévérance et du respect, tout est possible, que ce soit à la pétanque ou dans d'autres domaines de la vie. Nous croyons en l'importance de se fixer des buts et de tout faire pour les atteindre.</p>
             </div>
         </div>
 
@@ -241,7 +145,7 @@
     </div>
 
     <script>
-        let isUserLoggedIn = false; 
+        let isUserLoggedIn = false;
         function updateUI() {
             const loggedOutView = document.getElementById('logged-out-view');
             const loggedInView = document.getElementById('logged-in-view');

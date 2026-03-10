@@ -6,94 +6,9 @@
     <title>Connexion | FORUP</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="css/shared.css">
     <style>
-        :root {
-            --bg: #f8fafc;
-            --primary: #0f172a; 
-            --accent: #A67B5B; 
-            --white: #ffffff;
-            --shadow: 0 20px 50px rgba(0,0,0,0.05);
-        }
-
-        body { 
-            margin: 0; 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background-color: var(--bg); 
-            color: var(--primary);
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* --- NAVIGATION (TON STYLE D'ORIGINE CONSERVÉ) --- */
-        nav {
-            display: flex; 
-            align-items: center;
-            padding: 0 60px; 
-            height: 90px; 
-            background: var(--white);
-            position: sticky; 
-            top: 0; 
-            z-index: 1000;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .logo { 
-            display: flex; 
-            align-items: center; 
-            text-decoration: none;
-            width: 150px; 
-        }
-        .logo img { height: 40px; width: auto; }
-
-        .nav-links { 
-            display: flex; 
-            gap: 40px; 
-            flex: 1; 
-            justify-content: center; 
-        }
-        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
-
-        .nav-right {
-            width: 150px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-            align-items: center;
-        }
-
-        /* Styles pour le menu déroulant (Dropdown) */
-        .user-menu-wrapper { position: relative; display: inline-block; }
-        .account-icon { font-size: 1.5rem; color: var(--primary); text-decoration: none; cursor: pointer; }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: var(--shadow);
-            border-radius: 12px;
-            padding: 10px 0;
-            z-index: 1000;
-        }
-        .dropdown-content a, .dropdown-content button {
-            display: block;
-            padding: 10px 20px;
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 600;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-        }
-        .user-menu-wrapper:hover .dropdown-content { display: block; }
-
-        /* --- SECTION FORMULAIRE (STRICTEMENT IDENTIQUE) --- */
+        /* --- SECTION FORMULAIRE --- */
         .auth-container {
             flex: 1;
             display: flex;
@@ -119,7 +34,7 @@
 
         .form-group { text-align: left; margin-bottom: 15px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; }
-        
+
         .form-group input {
             width: 100%;
             padding: 14px;
@@ -174,7 +89,7 @@
 
         .switch-auth { margin-top: 25px; font-size: 0.9rem; }
         .switch-auth a { color: var(--accent); text-decoration: none; font-weight: 700; }
-        
+
         .divider { margin: 25px 0; color: #cbd5e1; display: flex; align-items: center; gap: 10px; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; }
         .divider hr { flex: 1; border: 0; border-top: 1px solid #f1f5f9; }
     </style>
@@ -209,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <a href="parametre.html" style="color: var(--primary); font-size: 1.5rem;"><i class="fa-solid fa-sliders"></i></a>
+            <a href="parametre.html" class="settings-icon"><i class="fa-solid fa-sliders"></i></a>
         </div>
     </nav>
 
@@ -217,7 +132,7 @@
         <div class="auth-card">
             <h2>Bon retour !</h2>
             <p>Connectez-vous pour rejoindre la famille !</p>
-            
+
             <form id="login-form">
                 <div class="form-group">
                     <label>Email</label>
@@ -251,8 +166,7 @@
     </div>
 
     <script>
-        // Logique de simulation de connexion pour tester le menu
-        let isUserLoggedIn = false; 
+        let isUserLoggedIn = false;
         function updateUI() {
             const loggedOutView = document.getElementById('logged-out-view');
             const loggedInView = document.getElementById('logged-in-view');
