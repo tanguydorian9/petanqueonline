@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PETANQUE | Allier (03)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            /* Palette de couleurs basée sur vos images */
+            --bg: #b1c1d1;        /* Bleu gris clair léger de fond */
+            --accent: #2094e3;    /* Bleu vif d'accentuation pour boutons, icônes, etc. */
+            
+            --primary: #1e293b;   /* Texte sombre pour contraste */
+            --white: #ffffff;
+            --text-muted: #64748b;
+            --heart: #ef4444;
+            --nav-height: 70px;
+        }
+
+        body {
+            margin: 0; 
+            padding-top: calc(var(--nav-height) + 25px);
+            padding-bottom: 25px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            display: flex; gap: 30px; justify-content: center;
+            color: var(--primary);
+        }
+
+        /* --- NAVBAR HAUT --- */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: var(--nav-height);
+            background: var(--white);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 50px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        .nav-logo { font-weight: 800; font-size: 1.5rem; color: var(--accent); text-decoration: none; letter-spacing: 1px; }
+        
+        .nav-btn {
+            text-decoration: none; color: var(--primary); font-weight: 700;
+            padding: 10px 18px; border-radius: 12px; transition: 0.2s;
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.95rem;
+        }
+        .nav-btn:hover { background: #f0f7ff; color: var(--accent); }
+        .nav-btn i { font-size: 1.1rem; color: var(--accent); }
+
+        /* --- SIDEBAR --- */
+        .sidebar { width: 300px; display: flex; flex-direction: column; gap: 20px; position: sticky; top: calc(var(--nav-height) + 25px); height: fit-content; }
+        .card { 
+            background: var(--white); border-radius: 20px; padding: 20px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.3); 
+        }
+
+        .sidebar-menu { display: flex; flex-direction: column; gap: 8px; }
+
+        .weather-card { background: var(--accent); color: white; border: none; }
+        .temp-val { font-size: 2.5rem; font-weight: 800; }
+
+        .friend-item { 
+            display: flex; align-items: center; gap: 12px; padding: 10px;
+            cursor: pointer; border-radius: 12px; transition: 0.2s; font-weight: 700;
+        }
+        .friend-item:hover { background: #f0f7ff; color: var(--accent); }
+        .pfp-mini { width: 35px; height: 35px; border-radius: 50%; border: 2px solid var(--accent); object-fit: cover; }
+
+        /* --- CONTENU PRINCIPAL --- */
+        .main-content { width: 700px; }
+        #comment-view { display: none; }
+
+        .publish-box { 
+            background: var(--white); border-radius: 20px; padding: 20px; margin-bottom: 25px;
+            border: 1.5px solid rgba(32, 148, 227, 0.1);
+        }
+        textarea { width: 100%; border: none; outline: none; resize: none; font-family: inherit; font-size: 1.1rem; background: transparent; }
+
+        #preview-container { position: relative; display: inline-block; margin-top: 15px; }
+        #preview-img { max-height: 200px; border-radius: 12px; display: block; }
+
+        .post { 
+            background: var(--white); border-radius: 22px; padding: 22px; margin-bottom: 18px;
+            border: 2px solid transparent; transition: 0.3s; cursor: pointer;
+        }
+        .post:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .pfp-post { width: 50px; height: 50px; border-radius: 50%; border: 2.5px solid var(--accent); object-fit: cover; }
+        
+        .btn-accent { 
+            background: var(--accent); color: white; border: none; padding: 10px 24px; 
+            border-radius: 14px; font-weight: 800; cursor: pointer; transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(32, 148, 227, 0.3);
+        }
+        .btn-accent:hover { filter: brightness(1.1); transform: scale(1.02); }
+
+        .like-btn.active { color: var(--heart); }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">PETANQUE</a>
+        <div style="display: flex; gap: 10px;">
+            <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> Accueil</a>
+            <a href="compte.html" class="nav-btn"><i class="fa-solid fa-user"></i> Mon Profil</a>
+        </div>
+    </nav>
+
+    <aside class="sidebar">
+        <div class="card">
+            <div class="sidebar-menu">
+                <a href="index.html" class="nav-btn"><i class="fa-solid fa-house"></i> Menu principal</a>
+                <a href="carte.html" class="nav-btn"><i class="fa-solid fa-map-location-dot"></i> Retour à la Carte</a>
+            </div>
+            <hr style="border:0; border-top:1px solid #eee; margin:15px 0;">
+            <div style="text-align: center;">
+                <h2 style="color:var(--accent); margin:0; font-weight: 800;">ALLIER (03)</h2>
+                <small style="color:var(--text-muted)">Espace local</small>
+            </div>
+        </div>
+
+        <div class="card weather-card">
+            <small>MÉTÉO - MOULINS</small>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:5px;">
+                <span id="temp" class="temp-val">--°</span>
+                <i class="fa-solid fa-cloud-sun" style="font-size: 2.2rem;"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-top:0; font-size:1.1rem; font-weight: 800;">👥 Mes Amis</h3>
+            <div id="friends-container">
+                <div class="friend-item">
+                    <img src="https://i.pravatar.cc/100?u=Dédé" class="pfp-mini"> <span>Dédé03</span>
+                </div>
+                <div class="friend-item">
+                    <img src="https://i.pravatar.cc/100?u=Marie" class="pfp-mini"> <span>LaVichyssoise</span>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div id="feed-view">
+            <div class="publish-box card">
+                <textarea id="postInput" placeholder="Quoi de neuf dans l'Allier ?" rows="2"></textarea>
+                <div id="preview-container"></div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px; border-top:1px solid #f1f1f1; padding-top:12px;">
+                    <label style="cursor:pointer; color:var(--accent); font-size:1.6rem;">
+                        <i class="fa-regular fa-image"></i>
+                        <input type="file" id="imageInput" hidden accept="image/*" onchange="previewImage(this)">
+                    </label>
+                    <button class="btn-accent" onclick="publishPost()">Publier</button>
+                </div>
+            </div>
+            <h3 style="font-weight: 800; margin-left: 5px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Fil d'actualité</h3>
+            <div id="posts-container"></div>
+        </div>
+
+        <div id="comment-view" class="card">
+            <button onclick="showView('feed-view')" style="border:none; background:none; color:var(--accent); cursor:pointer; font-weight:800; margin-bottom:15px; font-family: inherit;">⬅ Retour au fil</button>
+            <div id="selected-post-header"></div>
+            <hr style="border:0; border-top:1px solid #eee; margin:20px 0;">
+            <div id="comments-list"></div>
+            <div style="display:flex; gap:10px; margin-top:25px;">
+                <input type="text" id="commentInput" style="flex:1; padding:14px; border-radius:14px; border:1px solid #ddd; font-family: inherit;" placeholder="Répondre...">
+                <button class="btn-accent" onclick="addComment()">Envoyer</button>
+            </div>
+        </div>
+    </main>
+
+<script>
+    // Le script reste identique pour assurer le fonctionnement du forum
+    const pseudos = ["Marco03", "Pétanqueuse03", "LaGachette", "Moulinois"];
+    function getNow() {
+        const d = new Date();
+        return `Le ${d.getDate().toString().padStart(2, '0')}/${(d.getMonth()+1).toString().padStart(2, '0')} à ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
+    }
+
+    function generateInitialData() {
+        let fakePosts = [];
+        for(let i=0; i<5; i++) {
+            fakePosts.push({
+                id: i,
+                user: pseudos[Math.floor(Math.random()*pseudos.length)],
+                content: "Salut l'Allier ! Prêt pour une partie aujourd'hui ?",
+                img: null,
+                comments: [],
+                likes: Math.floor(Math.random()*10),
+                isLiked: false,
+                date: "Aujourd'hui"
+            });
+        }
+        return fakePosts;
+    }
+
+    let posts = JSON.parse(localStorage.getItem('posts_03_v2')) || generateInitialData();
+    let currentPostId = null;
+
+    window.onload = () => { renderPosts(); fetchWeather(); };
+
+    function renderPosts() {
+        const container = document.getElementById('posts-container');
+        container.innerHTML = '';
+        posts.slice().reverse().forEach(post => {
+            container.innerHTML += `
+                <div class="post" onclick="openComments(${post.id})">
+                    <div style="display:flex; gap:18px;">
+                        <img src="https://i.pravatar.cc/100?u=${post.user}" class="pfp-post">
+                        <div style="flex:1">
+                            <div style="display:flex; justify-content:space-between;">
+                                <strong style="color:var(--accent)">${post.user}</strong>
+                                <span class="post-date">${post.date}</span>
+                            </div>
+                            <div style="margin:10px 0">${post.content}</div>
+                            ${post.img ? `<img src="${post.img}" style="width:100%; border-radius:15px; margin-top:10px;">` : ''}
+                            <div style="margin-top:15px; font-size:0.85rem; color:var(--text-muted); font-weight:700; display:flex; gap:20px;">
+                                <span>💬 ${post.comments.length}</span>
+                                <span class="like-btn ${post.isLiked ? 'active' : ''}">❤️ ${post.likes}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = e => {
+                document.getElementById('preview-container').innerHTML = `<img src="${e.target.result}" id="preview-img">`;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function publishPost() {
+        const text = document.getElementById('postInput').value;
+        const img = document.getElementById('preview-img')?.src || null;
+        if(!text && !img) return;
+        posts.push({ id: Date.now(), user: "Moi", content: text, img: img, comments: [], likes: 0, isLiked: false, date: getNow() });
+        localStorage.setItem('posts_03_v2', JSON.stringify(posts));
+        renderPosts();
+        document.getElementById('postInput').value = '';
+        document.getElementById('preview-container').innerHTML = '';
+        confetti({ particleCount: 40, spread: 60, colors: ['#2094e3', '#ffffff'] });
+    }
+
+    function openComments(id) {
+        currentPostId = id;
+        const post = posts.find(p => p.id === id);
+        document.getElementById('selected-post-header').innerHTML = `<h4 style="color:var(--accent)">${post.user}</h4><p>${post.content}</p>`;
+        document.getElementById('comments-list').innerHTML = post.comments.map(c => `<div style="padding:10px; border-bottom:1px solid #eee;"><strong>${c.user}</strong>: ${c.text}</div>`).join('');
+        showView('comment-view');
+    }
+
+    function addComment() {
+        const val = document.getElementById('commentInput').value;
+        if(!val) return;
+        const post = posts.find(p => p.id === currentPostId);
+        post.comments.push({ user: "Moi", text: val });
+        localStorage.setItem('posts_03_v2', JSON.stringify(posts));
+        openComments(currentPostId);
+        document.getElementById('commentInput').value = '';
+    }
+
+    function showView(id) {
+        document.getElementById('feed-view').style.display = id === 'feed-view' ? 'block' : 'none';
+        document.getElementById('comment-view').style.display = id === 'comment-view' ? 'block' : 'none';
+    }
+
+    async function fetchWeather() {
+        try {
+            const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=46.56&longitude=3.33&current_weather=true');
+            const data = await res.json();
+            document.getElementById('temp').innerText = Math.round(data.current_weather.temperature) + "°C";
+        } catch(e) { document.getElementById('temp').innerText = "12°C"; }
+    }
+</script>
+</body>
+</html>

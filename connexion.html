@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | FORUP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --primary: #0f172a; 
+            --accent: #A67B5B; 
+            --white: #ffffff;
+            --shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- NAVIGATION (TON STYLE D'ORIGINE CONSERVÉ) --- */
+        nav {
+            display: flex; 
+            align-items: center;
+            padding: 0 60px; 
+            height: 90px; 
+            background: var(--white);
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            text-decoration: none;
+            width: 150px; 
+        }
+        .logo img { height: 40px; width: auto; }
+
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            flex: 1; 
+            justify-content: center; 
+        }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-right {
+            width: 150px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* Styles pour le menu déroulant (Dropdown) */
+        .user-menu-wrapper { position: relative; display: inline-block; }
+        .account-icon { font-size: 1.5rem; color: var(--primary); text-decoration: none; cursor: pointer; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: var(--shadow);
+            border-radius: 12px;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        .dropdown-content a, .dropdown-content button {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+        .user-menu-wrapper:hover .dropdown-content { display: block; }
+
+        /* --- SECTION FORMULAIRE (STRICTEMENT IDENTIQUE) --- */
+        .auth-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .auth-card {
+            background: var(--white);
+            width: 100%;
+            max-width: 420px;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-card h2 { font-weight: 800; font-size: 1.8rem; margin: 0 0 10px 0; }
+        .auth-card p { color: #64748b; margin-bottom: 30px; font-size: 0.95rem; }
+
+        .form-group { text-align: left; margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 2px solid #f1f5f9;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: #fffdfb;
+        }
+
+        .btn-login {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover { background: #8d664a; transform: translateY(-2px); }
+
+        .social-btn {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #f1f5f9;
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: inherit;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        .social-btn:hover { background: #f8fafc; border-color: #e2e8f0; }
+        .btn-fb { background: #1877F2; color: white; border: none; }
+        .btn-fb:hover { background: #166fe5; }
+
+        .switch-auth { margin-top: 25px; font-size: 0.9rem; }
+        .switch-auth a { color: var(--accent); text-decoration: none; font-weight: 700; }
+        
+        .divider { margin: 25px 0; color: #cbd5e1; display: flex; align-items: center; gap: 10px; font-size: 0.75rem; text-transform: uppercase; font-weight: 600; }
+        .divider hr { flex: 1; border: 0; border-top: 1px solid #f1f5f9; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo1.png" alt="Pétanque Online Logo">
+        </a>
+        <div class="nav-links">
+            <a href="carte.html">Forum</a>
+            <a href="#">Concours</a>
+            <a href="boutique.html">Boutique</a>
+            <a href="galerie.html">Galerie</a>
+        </div>
+        <div class="nav-right">
+            <div class="user-menu-wrapper" id="user-menu">
+                <div id="logged-out-view">
+                    <a href="connexion.html" class="account-icon">
+                        <i class="fa-regular fa-circle-user"></i>
+                    </a>
+                </div>
+                <div id="logged-in-view" style="display: none;">
+                    <div class="account-icon active-user">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="compte.html">Mon Profil</a>
+                        <a href="parametre.html">Paramètres</a>
+                        <button onclick="simulateLogout()" class="btn-logout-menu">Déconnexion</button>
+                    </div>
+                </div>
+            </div>
+            <a href="parametre.html" style="color: var(--primary); font-size: 1.5rem;"><i class="fa-solid fa-sliders"></i></a>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2>Bon retour !</h2>
+            <p>Connectez-vous pour rejoindre la famille !</p>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="votre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-login">Se connecter</button>
+            </form>
+
+            <div class="divider"><hr> ou <hr></div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button onclick="alert('Google login')" class="social-btn">
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18">
+                    Continuer avec Google
+                </button>
+
+                <button onclick="alert('FB login')" class="social-btn btn-fb">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    Continuer avec Facebook
+                </button>
+            </div>
+
+            <div class="switch-auth">
+                Pas encore de compte ? <a href="inscription.html">Inscrivez-vous ici</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Logique de simulation de connexion pour tester le menu
+        let isUserLoggedIn = false; 
+        function updateUI() {
+            const loggedOutView = document.getElementById('logged-out-view');
+            const loggedInView = document.getElementById('logged-in-view');
+            if (isUserLoggedIn) {
+                loggedOutView.style.display = 'none';
+                loggedInView.style.display = 'block';
+            } else {
+                loggedOutView.style.display = 'block';
+                loggedInView.style.display = 'none';
+            }
+        }
+        function simulateLogout() {
+            isUserLoggedIn = false;
+            updateUI();
+        }
+        updateUI();
+    </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription | FORUP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --primary: #0f172a; 
+            --accent: #A67B5B; 
+            --white: #ffffff;
+            --shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+
+        body { 
+            margin: 0; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg); 
+            color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 60px; height: 90px; background: var(--white);
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 45px; width: auto; }
+
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- CONTENEUR D'INSCRIPTION --- */
+        .auth-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .auth-card {
+            background: var(--white);
+            width: 100%;
+            max-width: 450px;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative; /* Pour positionner le logo interne */
+            overflow: hidden;
+        }
+
+        /* Logo en haut à gauche dans la carte */
+        .card-logo-top {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            height: 30px;
+            width: auto;
+        }
+
+        .auth-card h2 { font-weight: 800; font-size: 2rem; margin: 10px 0 10px 0; }
+        .auth-card p { color: #64748b; margin-bottom: 30px; }
+
+        .form-group { text-align: left; margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 2px solid #f1f5f9;
+            font-family: inherit;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: #fffdfb;
+        }
+
+        .btn-register {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-register:hover { background: #8d664a; transform: translateY(-2px); }
+
+        .social-btn {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #f1f5f9;
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: inherit;
+            font-weight: 600;
+            transition: 0.2s;
+            margin-bottom: 10px;
+        }
+        .social-btn:hover { background: #f8fafc; border-color: #e2e8f0; }
+        .btn-fb { background: #1877F2; color: white; border: none; }
+        .btn-fb:hover { background: #145dbf; }
+
+        .switch-auth { margin-top: 25px; font-size: 0.9rem; }
+        .switch-auth a { color: var(--accent); text-decoration: none; font-weight: 700; }
+        
+        .divider { margin: 25px 0; color: #cbd5e1; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; }
+        .divider hr { flex: 1; border: 0; border-top: 1px solid #f1f5f9; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo1.png" alt="FORUP Logo">
+        </a>
+        <div class="nav-links">
+            <a href="carte.html">Forum</a>
+            <a href="#">Concours</a>
+            <a href="boutique.html">Boutique</a>
+            <a href="galerie.html">Galerie</a>
+        </div>
+        <div>
+             <a href="connexion.html" style="text-decoration: none; color: var(--primary); font-weight: 700;">Se connecter</a>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <img src="logo1.png" alt="Logo" class="card-logo-top">
+
+            <h2>Bienvenue !</h2>
+            <p>Créez votre compte pour rejoindre la famille FORUP.</p>
+            
+            <form id="register-form">
+                <div class="form-group">
+                    <label>Pseudo</label>
+                    <input type="text" id="reg-username" placeholder="Ton nom de joueur" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="reg-email" placeholder="votre@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" id="reg-password" placeholder="Minimum 6 caractères" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirmer le mot de passe</label>
+                    <input type="password" id="reg-confirm" placeholder="Tapez-le à nouveau" required>
+                </div>
+                <button type="submit" class="btn-register" id="submit-btn">Créer mon compte</button>
+            </form>
+
+            <div class="divider"><hr> ou <hr></div>
+
+            <button type="button" class="social-btn" id="google-btn">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18" alt="Google">
+                S'inscrire avec Google
+            </button>
+            <button type="button" class="social-btn btn-fb" id="facebook-btn">
+                <i class="fa-brands fa-facebook-f"></i>
+                S'inscrire avec Facebook
+            </button>
+
+            <div class="switch-auth">
+                Déjà membre ? <a href="connexion.html">Connectez-vous ici</a>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCQf7iXGUvF6RJlJYrwZiKL-0GaGjQ9e1A",
+            authDomain: "forup-fd5e0.firebaseapp.com",
+            projectId: "forup-fd5e0",
+            storageBucket: "forup-fd5e0.firebasestorage.app",
+            messagingSenderId: "172297642929",
+            appId: "1:172297642929:web:c4f8e900bcc166dfc15390",
+            measurementId: "G-MV648175DG"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // --- INSCRIPTION CLASSIQUE ---
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const pass = document.getElementById('reg-password').value;
+            const confirm = document.getElementById('reg-confirm').value;
+            const btn = document.getElementById('submit-btn');
+
+            if(pass !== confirm) { alert("Les mots de passe ne correspondent pas."); return; }
+            btn.innerText = "Chargement..."; btn.disabled = true;
+
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+                await setDoc(doc(db, "users", userCredential.user.uid), {
+                    pseudo: username,
+                    email: email,
+                    createdAt: new Date()
+                });
+                alert("Compte créé avec succès !");
+                window.location.href = "index.html"; 
+            } catch (error) {
+                alert("Erreur : " + error.message);
+                btn.innerText = "Créer mon compte"; btn.disabled = false;
+            }
+        });
+
+        // --- GOOGLE & FACEBOOK ---
+        const handleSocialLogin = async (provider) => {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                
+                const docSnap = await getDoc(doc(db, "users", user.uid));
+                if (!docSnap.exists()) {
+                    await setDoc(doc(db, "users", user.uid), {
+                        pseudo: user.displayName || "Joueur",
+                        email: user.email,
+                        createdAt: new Date()
+                    });
+                }
+                window.location.href = "index.html";
+            } catch (error) {
+                alert("Erreur de connexion sociale : " + error.message);
+            }
+        };
+
+        document.getElementById('google-btn').addEventListener('click', () => handleSocialLogin(new GoogleAuthProvider()));
+        document.getElementById('facebook-btn').addEventListener('click', () => handleSocialLogin(new FacebookAuthProvider()));
+    </script>
+</body>
+</html>

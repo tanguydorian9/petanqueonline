@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique - En préparation | Pétanque Online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #f2f1e1; 
+            --primary: #0f172a; 
+            --accent: #A67B5B; 
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-page);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { 
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 40px; 
+            width: auto;
+            display: block;
+            object-fit: contain;
+            mix-blend-mode: multiply; 
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 40px; 
+            margin-right: 20px; /* Centrage optique */
+        }
+
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 1.1rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .nav-right { display: flex; gap: 20px; font-size: 1.5rem; align-items: center; }
+        .nav-right a { color: var(--primary); text-decoration: none; transition: 0.3s; }
+        .nav-right a:hover { color: var(--accent); }
+
+        /* --- CONTENU --- */
+        .maintenance-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .maintenance-text {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.8rem;
+            max-width: 800px;
+            text-transform: uppercase;
+            margin: 0 0 20px 0;
+        }
+
+        .maintenance-img {
+            max-width: 450px; 
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 18px 35px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            background-color: var(--accent);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="logo1.png" alt="Pétanque Online Logo">
+        </a>
+        <div class="nav-links">
+            <a href="carte.html">Forum</a>
+            <a href="#">Concours</a>
+            <a href="boutique.html" style="color: var(--accent);">Boutique</a>
+            <a href="galerie.html">Galerie</a>
+        </div>
+        <div class="nav-right">
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+            <a href="#"><i class="fa-solid fa-sliders"></i></a>
+        </div>
+    </nav>
+
+    <main class="maintenance-container">
+        <h1 class="maintenance-text">
+            Cette page est en cours de préparation,<br>
+            l'équipe Pétanque Online y travaille actuellement.
+        </h1>
+
+        <img src="aie.png" alt="Aïe, crocheté !" class="maintenance-img">
+
+        <a href="index.html" class="back-btn">Retourner au menu</a>
+    </main>
+
+</body>
+</html>

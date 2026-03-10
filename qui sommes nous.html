@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui Sommes Nous | PétanqueConnect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --primary: #0f172a; 
+            --accent: #A67B5B; 
+            --white: #ffffff;
+            --text-muted: #64748b;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .logo { font-weight: 800; font-size: 1.4rem; line-height: 1; text-transform: uppercase; color: var(--primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { text-decoration: none; color: var(--primary); font-weight: 600; font-size: 1.1rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- STRUCTURE PAGE --- */
+        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+        
+        h1, h2 { font-weight: 800; text-transform: uppercase; color: var(--primary); }
+        h1 { font-size: 2.5rem; margin-bottom: 40px; text-align: center; }
+        h2 { font-size: 1.8rem; margin-top: 60px; border-left: 5px solid var(--accent); padding-left: 20px; margin-bottom: 25px; }
+
+        /* --- SECTION NOUS (DORIAN & PAUL) --- */
+        .intro-section { display: flex; gap: 50px; align-items: center; margin-bottom: 80px; }
+        .photo-placeholder { background-color: #000; min-width: 400px; height: 300px; border-radius: 30px; }
+        
+        .duo-container { display: flex; gap: 30px; margin-top: 40px; }
+        .person-card { flex: 1; background: var(--white); padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .photo-square { background-color: #000; width: 100%; height: 250px; border-radius: 20px; margin-bottom: 20px; }
+
+        /* --- VALEURS CORRIGÉES (UNE PAR LIGNE POUR LE TEXTE LONG) --- */
+        .grid-valeurs { display: flex; flex-direction: column; gap: 20px; margin-top: 30px; }
+        .valeur-item { background: var(--white); padding: 30px; border-radius: 25px; border-left: 6px solid var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+        .valeur-item strong { display: block; font-size: 1.4rem; margin-bottom: 10px; color: var(--accent); text-transform: uppercase; }
+
+        /* --- RUBRIQUES --- */
+        .rubriques-list { list-style: none; padding: 0; }
+        .rubriques-list li { background: var(--white); margin: 10px 0; padding: 15px 25px; border-radius: 15px; font-weight: 600; }
+        .rubriques-list li::before { content: "•"; color: var(--accent); font-weight: 800; margin-right: 15px; }
+
+        /* --- INVITATION & BOUTON --- */
+        .cta-section { text-align: center; margin-top: 80px; padding: 60px; background: var(--primary); border-radius: 40px; color: var(--white); }
+        .cta-section p { font-size: 1.3rem; font-weight: 600; margin-bottom: 30px; }
+        
+        .btn-register {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 20px 50px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.4s;
+            text-transform: uppercase;
+        }
+        .btn-register:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">PÉTANQUE<br>CONNECT</a>
+        <div class="nav-links">
+            <a href="carte.html">Forum</a>
+            <a href="#">Concours</a>
+            <a href="boutique.html">Boutique</a>
+            <a href="#">Galerie</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Qui sommes-nous ?</h1>
+
+        <div class="intro-section">
+            <div class="photo-placeholder"></div> 
+            <div>
+                <h2>Nous</h2>
+                <p>Nous, c'est Dorian et Paul. On se connaît depuis notre plus jeune âge : on a grandi ensemble en étant voisins dans un petit village en Bretagne. Depuis 20 ans, on ne s’est jamais perdus de vue et on est toujours restés de très bons amis.</p>
+                <p>PétanqueConnect est né de notre amitié et de la passion de Dorian pour la pétanque. On s’est donné une mission claire : casser l’image du « sport de camping » et montrer que la pétanque peut être aussi dynamique que moderne. Notre objectif ? Donner envie aux gens de sortir, de se rencontrer et de vivre de vrais moments de partage sur le terrain.</p>
+            </div>
+        </div>
+
+        <div class="duo-container">
+            <div class="person-card">
+                <div class="photo-square"></div>
+                <h2>Dorian</h2>
+                <p>Je m’appelle Dorian, j’ai 22 ans et je viens du Finistère. Je joue à la pétanque depuis l’âge de 5 ans, un sport qui fait partie intégrante de ma vie et de mon histoire familiale, puisque toute ma famille y joue et que mes parents se sont même rencontrés autour d’un terrain de pétanque.</p>
+                <p>Calme, sérieux et passionné, j’aime autant la pétanque conviviale que la compétition. À travers PétanqueConnect, je souhaite partager mon expérience et transmettre les valeurs fortes de la pétanque : respect, esprit d’équipe et convivialité.</p>
+            </div>
+
+            <div class="person-card">
+                <div class="photo-square"></div>
+                <h2>Paul</h2>
+                <p>Moi, c’est Paul. Souriant, posé et sociable, j’aime avant tout les échanges simples et les bons moments partagés. La pétanque, je la pratique surtout comme un loisir, en famille ou entre amis, pour ce qu’elle représente : la convivialité et le plaisir d’être ensemble.</p>
+                <p>Après mes études, j’ai eu envie de passer du côté concret et de me lancer dans un projet qui ait du sens. Avec PétanqueConnect, je mets aujourd’hui ma créativité et mes compétences au service d’un projet humain, dynamique et fédérateur.</p>
+            </div>
+        </div>
+
+        <h2>Présentation</h2>
+        <p>L’idée de créer ce site est née de notre envie de rassembler les passionnés de pétanque autour d’un espace commun, où chacun peut échanger, s’informer et partager sa passion, qu’il soit joueur loisir ou compétiteur.</p>
+
+        <h2>Histoire du site</h2>
+        <p>Pendant deux mois, chaque matin, on se retrouvait pour travailler sur notre idée, expérimenter des fonctionnalités et résoudre les problèmes ensemble. On a beaucoup appris sur la création d’un projet, sur nous-mêmes et sur la manière de mener une idée à terme. Aujourd’hui, notre site est en ligne et nous espérons le voir grandir. Nous continuerons à travailler pour le faire connaître, auprès de tous les passionnés et des novices qui veulent découvrir la pétanque.</p>
+
+        <h2>Nos 4 rubriques</h2>
+        <ul class="rubriques-list">
+            <li><strong>Le forum :</strong> pour discuter, poser des questions, partager des expériences.</li>
+            <li><strong>Les concours :</strong> pour retrouver les compétitions partout en France.</li>
+            <li><strong>La boutique :</strong> pour s’équiper et représenter la communauté.</li>
+            <li><strong>La galerie :</strong> pour partager des photos de tournois, de moments conviviaux et de souvenirs.</li>
+        </ul>
+
+        <h2>Nos valeurs</h2>
+        <div class="grid-valeurs">
+            <div class="valeur-item">
+                <strong>Convivialité</strong>
+                <p>La pétanque est avant tout un sport de partage et de bonne humeur. Nous tenons à créer un espace où chacun se sent bienvenu, dans le respect et l’esprit d’amitié.</p>
+            </div>
+            <div class="valeur-item">
+                <strong>Favoriser les échanges</strong>
+                <p>La pétanque est aussi un formidable moyen de créer du lien social. Elle permet de rencontrer du monde, d’échanger, de partager des moments simples et de ne pas rester seul. À travers ce site, nous souhaitons encourager les rencontres, les discussions et la création d’une vraie communauté.</p>
+            </div>
+            <div class="valeur-item">
+                <strong>L’Ambition</strong>
+                <p>Chacun a ses propres objectifs, qu’ils soient sportifs ou personnels. Avec du travail, de la persévérance et du respect, tout est possible, que ce soit à la pétanque ou dans d’autres domaines de la vie. Nous croyons en l’importance de se fixer des buts et de tout faire pour les atteindre.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <p>Que vous soyez débutant, amateur ou joueur confirmé, nous serons ravis de vous accueillir. Rejoignez notre communauté et partageons ensemble la passion de la pétanque !</p>
+            <a href="#" class="btn-register">S'inscrire maintenant</a>
+        </div>
+    </div>
+
+</body>
+</html>
