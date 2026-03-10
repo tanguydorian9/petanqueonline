@@ -165,24 +165,6 @@
         </div>
     </div>
 
-    <script>
-        let isUserLoggedIn = false;
-        function updateUI() {
-            const loggedOutView = document.getElementById('logged-out-view');
-            const loggedInView = document.getElementById('logged-in-view');
-            if (isUserLoggedIn) {
-                loggedOutView.style.display = 'none';
-                loggedInView.style.display = 'block';
-            } else {
-                loggedOutView.style.display = 'block';
-                loggedInView.style.display = 'none';
-            }
-        }
-        function simulateLogout() {
-            isUserLoggedIn = false;
-            updateUI();
-        }
-        updateUI();
-    </script>
+    <script src="js/shared.js"></script>
 </body>
 </html>

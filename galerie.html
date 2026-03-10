@@ -174,29 +174,8 @@
         </div>
     </div>
 
+    <script src="js/shared.js"></script>
     <script>
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-
-        let isUserLoggedIn = false;
-        function updateUI() {
-            const loggedOutView = document.getElementById('logged-out-view');
-            const loggedInView = document.getElementById('logged-in-view');
-            if (isUserLoggedIn) {
-                loggedOutView.style.display = 'none';
-                loggedInView.style.display = 'block';
-            } else {
-                loggedOutView.style.display = 'block';
-                loggedInView.style.display = 'none';
-            }
-        }
-        function simulateLogout() {
-            isUserLoggedIn = false;
-            updateUI();
-        }
-        updateUI();
-
         const fileInput = document.getElementById('fileInput');
         const dropZone = document.getElementById('drop-zone');
         const placeholder = document.getElementById('upload-placeholder');

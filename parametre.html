@@ -201,21 +201,20 @@
         </div>
     </div>
 
+    <script src="js/shared.js"></script>
     <script>
         const themeToggle = document.getElementById('dark-mode-toggle');
-        const bodyElement = document.body;
 
         if (localStorage.getItem('theme') === 'dark') {
-            bodyElement.classList.add('dark-mode');
             themeToggle.checked = true;
         }
 
         themeToggle.addEventListener('change', () => {
             if (themeToggle.checked) {
-                bodyElement.classList.add('dark-mode');
+                document.body.classList.add('dark-mode');
                 localStorage.setItem('theme', 'dark');
             } else {
-                bodyElement.classList.remove('dark-mode');
+                document.body.classList.remove('dark-mode');
                 localStorage.setItem('theme', 'light');
             }
         });
@@ -223,24 +222,6 @@
         function saveSettings() {
             alert("Préférences sauvegardées avec succès !");
         }
-
-        let isUserLoggedIn = false;
-        function updateUI() {
-            const loggedOutView = document.getElementById('logged-out-view');
-            const loggedInView = document.getElementById('logged-in-view');
-            if (isUserLoggedIn) {
-                loggedOutView.style.display = 'none';
-                loggedInView.style.display = 'block';
-            } else {
-                loggedOutView.style.display = 'block';
-                loggedInView.style.display = 'none';
-            }
-        }
-        function simulateLogout() {
-            isUserLoggedIn = false;
-            updateUI();
-        }
-        updateUI();
     </script>
 
 </body>

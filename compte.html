@@ -131,30 +131,13 @@
         </main>
     </div>
 
+    <script src="js/shared.js"></script>
     <script>
         function previewImage(event) {
             const reader = new FileReader();
             reader.onload = function(){ document.getElementById('profile-pic').src = reader.result; };
             reader.readAsDataURL(event.target.files[0]);
         }
-
-        let isUserLoggedIn = false;
-        function updateUI() {
-            const loggedOutView = document.getElementById('logged-out-view');
-            const loggedInView = document.getElementById('logged-in-view');
-            if (isUserLoggedIn) {
-                loggedOutView.style.display = 'none';
-                loggedInView.style.display = 'block';
-            } else {
-                loggedOutView.style.display = 'block';
-                loggedInView.style.display = 'none';
-            }
-        }
-        function simulateLogout() {
-            isUserLoggedIn = false;
-            updateUI();
-        }
-        updateUI();
 
         document.getElementById('profile-form').addEventListener('submit', function(e) {
             e.preventDefault();
