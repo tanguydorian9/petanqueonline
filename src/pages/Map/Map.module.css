@@ -126,7 +126,7 @@
 
 /* --- TOOLTIP --- */
 .tooltip {
-    position: absolute;
+    position: fixed;
     display: none;
     background: rgba(44, 62, 80, 0.95);
     color: white;

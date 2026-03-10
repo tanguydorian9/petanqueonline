@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 export function useWeather(latitude, longitude) {
   const [temp, setTemp] = useState(null);
+  const [weatherCode, setWeatherCode] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,8 +15,10 @@ export function useWeather(latitude, longitude) {
         );
         const data = await res.json();
         setTemp(Math.round(data.current_weather.temperature));
+        setWeatherCode(data.current_weather.weathercode);
       } catch {
         setTemp(12);
+        setWeatherCode(0);
       } finally {
         setLoading(false);
       }
@@ -24,5 +27,5 @@ export function useWeather(latitude, longitude) {
     fetchWeather();
   }, [latitude, longitude]);
 
-  return { temp, loading };
+  return { temp, weatherCode, loading };
 }

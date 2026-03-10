@@ -6,16 +6,16 @@ import styles from './Department.module.css';
 
 function getNow() {
   const d = new Date();
-  return `Le ${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')} a ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
+  return `Le ${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')} à ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
 }
 
-const PSEUDOS = ['Marco03', 'Petanqueuse03', 'LaGachette', 'Moulinois'];
+const PSEUDOS = ['Marco03', 'Pétanqueuse03', 'LaGachette', 'Moulinois'];
 
 function generateInitialData() {
   return Array.from({ length: 5 }, (_, i) => ({
     id: i,
     user: PSEUDOS[Math.floor(Math.random() * PSEUDOS.length)],
-    content: 'Salut l\'Allier ! Pret pour une partie aujourd\'hui ?',
+    content: 'Salut l\'Allier ! Prêt pour une partie aujourd\'hui ?',
     img: null,
     comments: [],
     likes: Math.floor(Math.random() * 10),
@@ -84,12 +84,22 @@ export default function SocialLayout({ dept }) {
     setCommentInput('');
   };
 
+  const toggleLike = (postId, e) => {
+    e.stopPropagation();
+    const updated = posts.map(p =>
+      p.id === postId
+        ? { ...p, isLiked: !p.isLiked, likes: p.isLiked ? p.likes - 1 : p.likes + 1 }
+        : p
+    );
+    savePosts(updated);
+  };
+
   const currentPost = posts.find(p => p.id === currentPostId);
 
   return (
     <div className={styles.socialPage}>
       <nav className={styles.socialNavbar}>
-        <Link to="/" className={styles.navLogo}>Petanque Online</Link>
+        <Link to="/" className={styles.navLogo}>Pétanque Online</Link>
         <div style={{ display: 'flex', gap: 10 }}>
           <Link to="/" className={styles.navBtn}><i className="fa-solid fa-house"></i> Accueil</Link>
           <Link to="/compte" className={styles.navBtn}><i className="fa-solid fa-user"></i> Mon Profil</Link>
@@ -100,7 +110,7 @@ export default function SocialLayout({ dept }) {
         <div className={styles.card}>
           <div className={styles.sidebarMenu}>
             <Link to="/" className={styles.navBtn}><i className="fa-solid fa-house"></i> Menu principal</Link>
-            <Link to="/carte" className={styles.navBtn}><i className="fa-solid fa-map-location-dot"></i> Retour a la Carte</Link>
+            <Link to="/carte" className={styles.navBtn}><i className="fa-solid fa-map-location-dot"></i> Retour à la Carte</Link>
           </div>
           <hr style={{ border: 0, borderTop: '1px solid #eee', margin: '15px 0' }} />
           <div style={{ textAlign: 'center' }}>
@@ -110,7 +120,7 @@ export default function SocialLayout({ dept }) {
         </div>
 
         <div className={`${styles.card} ${styles.socialWeather}`}>
-          <small>METEO - {dept.city.toUpperCase()}</small>
+          <small>MÉTÉO - {dept.city.toUpperCase()}</small>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 5 }}>
             <span className={styles.tempVal}>{temp !== null ? `${temp}\u00b0` : '--\u00b0'}</span>
             <i className="fa-solid fa-cloud-sun" style={{ fontSize: '2.2rem' }}></i>
@@ -118,10 +128,10 @@ export default function SocialLayout({ dept }) {
         </div>
 
         <div className={styles.card}>
-          <h3 style={{ marginTop: 0, fontSize: '1.1rem', fontWeight: 800 }}>Mes Amis</h3>
+          <h3 style={{ marginTop: 0, fontSize: '1.1rem', fontWeight: 800 }}>👥 Mes Amis</h3>
           <div className={styles.friendItem}>
-            <img src="https://i.pravatar.cc/100?u=Dede" className={styles.pfpMini} alt="" />
-            <span>Dede03</span>
+            <img src="https://i.pravatar.cc/100?u=Dédé" className={styles.pfpMini} alt="" />
+            <span>Dédé03</span>
           </div>
           <div className={styles.friendItem}>
             <img src="https://i.pravatar.cc/100?u=Marie" className={styles.pfpMini} alt="" />
@@ -155,7 +165,7 @@ export default function SocialLayout({ dept }) {
             </div>
 
             <h3 style={{ fontWeight: 800, marginLeft: 5, color: 'white', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
-              Fil d'actualite
+              📰 Fil d'actualité
             </h3>
 
             <div>
@@ -172,7 +182,13 @@ export default function SocialLayout({ dept }) {
                       {post.img && <img src={post.img} style={{ width: '100%', borderRadius: 15, marginTop: 10 }} alt="" />}
                       <div style={{ marginTop: 15, fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 700, display: 'flex', gap: 20 }}>
                         <span>&#128172; {post.comments.length}</span>
-                        <span className={post.isLiked ? styles.liked : ''}>&#10084;&#65039; {post.likes}</span>
+                        <span
+                          className={post.isLiked ? styles.liked : ''}
+                          style={{ cursor: 'pointer' }}
+                          onClick={(e) => toggleLike(post.id, e)}
+                        >
+                          &#10084;&#65039; {post.likes}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -203,7 +219,7 @@ export default function SocialLayout({ dept }) {
                     value={commentInput}
                     onChange={e => setCommentInput(e.target.value)}
                     style={{ flex: 1, padding: 14, borderRadius: 14, border: '1px solid #ddd', fontFamily: 'inherit' }}
-                    placeholder="Repondre..."
+                    placeholder="Répondre..."
                   />
                   <button className={styles.btnAccent} onClick={addComment}>Envoyer</button>
                 </div>

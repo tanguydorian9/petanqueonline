@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import styles from './Department.module.css';
 
 const TAG_CLASS = {
@@ -8,18 +9,28 @@ const TAG_CLASS = {
 };
 
 export default function TopicCard({ topic, gradient, onDelete, onLike }) {
+  const [fading, setFading] = useState(false);
+  const cardRef = useRef(null);
   const initial = topic.pseudo.charAt(0).toUpperCase();
   const gradientStyle = {
     background: `linear-gradient(135deg, ${gradient[0]} 0%, ${gradient[1]} 100%)`,
   };
 
+  const handleDelete = (id) => {
+    setFading(true);
+    setTimeout(() => onDelete(id), 300);
+  };
+
   return (
-    <div className={`${styles.glassPanel} ${styles.topic}`}>
+    <div
+      ref={cardRef}
+      className={`${styles.glassPanel} ${styles.topic} ${fading ? styles.topicFadeOut : ''}`}
+    >
       <div className={styles.topicHeader}>
         <span className={`${styles.tag} ${TAG_CLASS[topic.tag] || styles.tagAutre}`}>
           {topic.tag}
         </span>
-        <button className={styles.btnDelete} onClick={() => onDelete(topic.id)}>
+        <button className={styles.btnDelete} onClick={() => handleDelete(topic.id)}>
           &#10006;
         </button>
       </div>

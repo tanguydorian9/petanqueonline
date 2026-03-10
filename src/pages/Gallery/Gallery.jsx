@@ -6,7 +6,7 @@ const INITIAL_PHOTOS = [
   {
     id: 1,
     src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500',
-    desc: 'Belle journee de petanque !',
+    desc: 'Belle journée de pétanque !',
     type: 'public',
     likes: 12,
     comments: 3,
@@ -44,7 +44,7 @@ export default function Gallery() {
     const newPhoto = {
       id: Date.now(),
       src: previewSrc,
-      desc: desc || 'Souvenir Petanque Online',
+      desc: desc || 'Souvenir Pétanque Online',
       type,
       likes: 0,
       comments: 0,
@@ -81,7 +81,7 @@ export default function Gallery() {
                 <img src={previewSrc} alt="Preview" />
               </div>
               <div className={styles.uploadForm}>
-                <input type="text" placeholder="Ecrire une description..." value={desc} onChange={e => setDesc(e.target.value)} onClick={e => e.stopPropagation()} />
+                <input type="text" placeholder="Écrire une description..." value={desc} onChange={e => setDesc(e.target.value)} onClick={e => e.stopPropagation()} />
                 <div className={styles.checkboxRow} onClick={e => e.stopPropagation()}>
                   <input type="checkbox" id="is-public-check" checked={isPublic} onChange={e => setIsPublic(e.target.checked)} />
                   <label htmlFor="is-public-check">Rendre cette photo publique</label>
@@ -98,7 +98,7 @@ export default function Gallery() {
 
       <div className={styles.tabs}>
         <button className={`${styles.tab} ${activeTab === 'public' ? styles.tabActive : ''}`} onClick={() => setActiveTab('public')}>PUBLIC</button>
-        <button className={`${styles.tab} ${activeTab === 'private' ? styles.tabActive : ''}`} onClick={() => setActiveTab('private')}>PRIVEE</button>
+        <button className={`${styles.tab} ${activeTab === 'private' ? styles.tabActive : ''}`} onClick={() => setActiveTab('private')}>PRIVÉE</button>
       </div>
 
       <div className={styles.grid}>
@@ -111,7 +111,7 @@ export default function Gallery() {
                 {photo.type === 'public' ? (
                   <span><i className="fa-solid fa-comment"></i> {photo.comments}</span>
                 ) : (
-                  <span className={styles.privateLabel}><i className="fa-solid fa-lock"></i> PRIVE</span>
+                  <span className={styles.privateLabel}><i className="fa-solid fa-lock"></i> PRIVÉ</span>
                 )}
               </div>
             </div>

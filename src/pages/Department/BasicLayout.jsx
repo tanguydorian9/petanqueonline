@@ -24,7 +24,7 @@ export default function BasicLayout({ dept }) {
           <div className={styles.topicCount}>
             <strong>{topics.length}</strong> sujets actifs
           </div>
-          <button className={styles.btnReset} onClick={() => { if (confirm('Vraiment tout effacer ?')) clearAll(); }}>
+          <button className={styles.btnReset} onClick={() => { if (confirm(`Vraiment tout effacer pour le ${dept.number} ?`)) clearAll(); }}>
             Reset Tout
           </button>
         </aside>
@@ -37,7 +37,7 @@ export default function BasicLayout({ dept }) {
                 key={topic.id}
                 topic={topic}
                 gradient={dept.gradient}
-                onDelete={(id) => { if (confirm('Supprimer ce message ?')) deleteTopic(id); }}
+                onDelete={(id) => { if (confirm(`Supprimer ce message du ${dept.number} ?`)) deleteTopic(id); }}
                 onLike={toggleLike}
               />
             ))}

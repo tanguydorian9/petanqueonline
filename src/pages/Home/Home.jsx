@@ -7,10 +7,10 @@ export default function Home() {
       <main className={styles.heroContainer}>
         <Link to="/carte" className={`${styles.mainCard} ${styles.cardLeft}`}>
           <div className={styles.bubbleBtn}>FORUM</div>
-          <div className={styles.hoverText}>Viens discuter avec des passionnes pres de chez toi !</div>
+          <div className={styles.hoverText}>Viens discuter avec des passionnés près de chez toi !</div>
         </Link>
         <a href="#" className={`${styles.mainCard} ${styles.cardRight}`}>
-          <div className={styles.bubbleBtn}>Calendrier petanque</div>
+          <div className={styles.bubbleBtn}>Calendrier pétanque</div>
           <div className={styles.hoverText}>Trouve ton concours !</div>
         </a>
       </main>

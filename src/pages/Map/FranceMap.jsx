@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { regions, SVG_VIEWBOX } from '../../assets/franceSvgPaths';
 
@@ -24,11 +24,17 @@ const SEARCH_STYLE = {
   transformOrigin: 'center',
 };
 
+const DIM_STYLE = {
+  opacity: 0.2,
+};
+
 export default function FranceMap({ searchQuery, onHover, onHoverEnd }) {
   const navigate = useNavigate();
   const [hoveredDept, setHoveredDept] = useState(null);
+  const [pulsingDept, setPulsingDept] = useState(null);
+  const pulseTimerRef = useRef(null);
 
-  const handleMouseEnter = useCallback((dept, e) => {
+  const handleMouseMove = useCallback((dept, e) => {
     setHoveredDept(dept.number);
     onHover?.(dept, e);
   }, [onHover]);
@@ -39,7 +45,12 @@ export default function FranceMap({ searchQuery, onHover, onHoverEnd }) {
   }, [onHoverEnd]);
 
   const handleClick = useCallback((dept) => {
-    navigate(`/departements/${dept.number}`);
+    setPulsingDept(dept.number);
+    clearTimeout(pulseTimerRef.current);
+    pulseTimerRef.current = setTimeout(() => {
+      setPulsingDept(null);
+      navigate(`/departements/${dept.number}`);
+    }, 300);
   }, [navigate]);
 
   const isSearchMatch = (dept) => {
@@ -48,14 +59,30 @@ export default function FranceMap({ searchQuery, onHover, onHoverEnd }) {
     return dept.name.toLowerCase().includes(q) || dept.number.includes(q);
   };
 
+  const hasSearch = searchQuery && searchQuery.trim().length > 0;
+
   return (
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox={SVG_VIEWBOX}>
+      <style>{`
+        @keyframes pulseMap {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.08); }
+          100% { transform: scale(1); }
+        }
+        .pulse-effect {
+          animation: pulseMap 0.3s ease-in-out;
+          transform-origin: center;
+        }
+      `}</style>
       {regions.map(region => (
         <g key={region.code} className={`region region-${region.code}`} data-nom={region.name}>
           {region.departments.map(dept => {
             const isHovered = hoveredDept === dept.number;
             const isMatch = isSearchMatch(dept);
+            const isPulsing = pulsingDept === dept.number;
+            const isDimmed = hasSearch && !isMatch;
             let style = { ...PATH_STYLE };
+            if (isDimmed) style = { ...style, ...DIM_STYLE };
             if (isMatch) style = { ...style, ...SEARCH_STYLE };
             if (isHovered) style = { ...style, ...HOVER_STYLE };
 
@@ -66,7 +93,8 @@ export default function FranceMap({ searchQuery, onHover, onHoverEnd }) {
                 data-nom={dept.name}
                 data-numerodepartement={dept.number}
                 style={style}
-                onMouseEnter={(e) => handleMouseEnter(dept, e)}
+                className={isPulsing ? 'pulse-effect' : ''}
+                onMouseMove={(e) => handleMouseMove(dept, e)}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleClick(dept)}
               />

@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <nav className={styles.nav}>
       <Link to="/" className={styles.logo}>
-        <img src="/images/logo1.png" alt="Petanque Online Logo" />
+        <img src="/images/logo1.png" alt="Pétanque Online Logo" />
       </Link>
 
       <div className={styles.navLinks}>
@@ -34,9 +34,9 @@ export default function Navbar() {
               </div>
               <div className={styles.dropdownContent}>
                 <Link to="/compte">Mon Profil</Link>
-                <Link to="/parametre">Parametres</Link>
+                <Link to="/parametre">Paramètres</Link>
                 <button onClick={logout} className={styles.btnLogoutMenu}>
-                  Deconnexion
+                  Déconnexion
                 </button>
               </div>
             </>

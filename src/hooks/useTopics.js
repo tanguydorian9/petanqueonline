@@ -10,7 +10,7 @@ export function useTopics(deptNumber, defaultTopic) {
       const initial = [{
         id: Date.now(),
         ...defaultTopic,
-        date: 'A l\'instant',
+        date: 'À l\'instant',
       }];
       localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
       return initial;

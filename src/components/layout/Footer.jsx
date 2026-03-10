@@ -4,11 +4,11 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerInfo}>
-        &copy; 2026 Petanque Online. Tous droits reserves<br />
+        &copy; 2026 Pétanque Online. Tous droits réservés<br />
         petanqueonline@gmail.com
       </div>
       <div className={styles.footerLogo}>
-        <img src="/images/logo1.png" alt="Petanque Online" />
+        <img src="/images/logo1.png" alt="Pétanque Online" />
       </div>
       <div className={styles.socials}>
         <a href="#"><i className="fa-brands fa-facebook-f"></i></a>

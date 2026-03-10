@@ -20,7 +20,7 @@ export default function Profile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Modifications enregistrees !');
+    alert('Modifications enregistrées !');
   };
 
   return (
@@ -44,7 +44,7 @@ export default function Profile() {
       </aside>
 
       <main className={styles.profileMain}>
-        <h2>Parametres du compte</h2>
+        <h2>Paramètres du compte</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.settingsGroup}>
             <h3>Informations personnelles</h3>
@@ -60,7 +60,7 @@ export default function Profile() {
             </div>
           </div>
           <div className={styles.settingsGroup}>
-            <h3>Securite</h3>
+            <h3>Sécurité</h3>
             <div className={styles.inputRow}>
               <div className={styles.field}>
                 <label>Nouveau mot de passe</label>
@@ -75,7 +75,7 @@ export default function Profile() {
           <button type="submit" className={styles.btnSave}>Enregistrer les modifications</button>
         </form>
         <div className={styles.dangerZone}>
-          <button className={styles.btnDelete}>Desactiver mon compte</button>
+          <button className={styles.btnDelete}>Désactiver mon compte</button>
         </div>
       </main>
     </div>

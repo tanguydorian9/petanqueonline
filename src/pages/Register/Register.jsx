@@ -59,7 +59,7 @@ export default function Register() {
       <div className={styles.authCard}>
         <img src="/images/logo1.png" alt="Logo" className={styles.cardLogoTop} />
         <h2>Bienvenue !</h2>
-        <p>Creez votre compte pour rejoindre la famille Petanque Online.</p>
+        <p>Créez votre compte pour rejoindre la famille Pétanque Online.</p>
 
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
@@ -72,14 +72,14 @@ export default function Register() {
           </div>
           <div className={styles.formGroup}>
             <label>Mot de passe</label>
-            <input type="password" placeholder="Minimum 6 caracteres" required value={password} onChange={e => setPassword(e.target.value)} />
+            <input type="password" placeholder="Minimum 6 caractères" required value={password} onChange={e => setPassword(e.target.value)} />
           </div>
           <div className={styles.formGroup}>
             <label>Confirmer le mot de passe</label>
-            <input type="password" placeholder="Tapez-le a nouveau" required value={confirm} onChange={e => setConfirm(e.target.value)} />
+            <input type="password" placeholder="Tapez-le à nouveau" required value={confirm} onChange={e => setConfirm(e.target.value)} />
           </div>
           <button type="submit" className={styles.btnRegister} disabled={loading}>
-            {loading ? 'Chargement...' : 'Creer mon compte'}
+            {loading ? 'Chargement...' : 'Créer mon compte'}
           </button>
         </form>
 
@@ -97,7 +97,7 @@ export default function Register() {
         </button>
 
         <div className={styles.switchAuth}>
-          Deja membre ? <Link to="/connexion">Connectez-vous ici</Link>
+          Déjà membre ? <Link to="/connexion">Connectez-vous ici</Link>
         </div>
       </div>
     </div>
